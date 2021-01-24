@@ -1,4 +1,4 @@
-import hashes, strscans
+import hashes, strscans, strformat
 
 type VersionCode* = distinct uint64
 
@@ -15,3 +15,11 @@ proc `==`*(a, b: VersionCode): bool {.borrow.}
 proc `<`*(a, b: VersionCode): bool {.borrow.}
 
 proc hash*(a: VersionCode): Hash {.borrow.}
+
+proc `$`*(self: VersionCode): string =
+  let raw = uint64 self
+  let a = uint16 (raw shr 48) and 0xFFFF
+  let b = uint16 (raw shr 32) and 0xFFFF
+  let c = uint16 (raw shr 16) and 0xFFFF
+  let d = uint16 raw and 0xFFFF
+  &"{a}.{b}.{c}.{d}"
