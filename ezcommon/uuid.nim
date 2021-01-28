@@ -1,4 +1,4 @@
-import std/[hashes, strformat]
+import std/[hashes, strformat], binpak
 
 type UUID* = distinct array[16, byte]
 
@@ -53,3 +53,10 @@ proc parseUUID*(str: string): UUID =
       tmp = imm
       even = true
   return UUID(ret)
+
+proc `~>`*(io: BinaryInput, x: var UUID) {.inline.} =
+  for i in 0..<16:
+    io ~> array[16, byte](x)[i]
+proc `<~`*(io: BinaryOutput, x: UUID) {.inline.} =
+  for i in 0..<16:
+    io <~ array[16, byte](x)[i]
