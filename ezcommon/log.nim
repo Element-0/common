@@ -28,6 +28,7 @@ type
   LogData* = object
     level: LogLevel
     area: string
+    content: string
     details: Table[string, LogDetail]
 
 genBinPak(LogData, LogDetail)
