@@ -29,4 +29,7 @@ type
     of res_load:
       modPath*: string
 
+converter toRequestPacket*(log: LogData): RequestPacket =
+  RequestPacket(kind: req_log, logData: log)
+
 genBinPak(RequestPacket, ResponsePacket)

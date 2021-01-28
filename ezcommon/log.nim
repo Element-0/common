@@ -33,4 +33,9 @@ type
     content*: string
     details*: Table[string, LogDetail]
 
+converter toLogDetail*(str: string): LogDetail = LogDetail(kind: ldk_text, val_text: str)
+converter toLogDetail*(val: bool): LogDetail = LogDetail(kind: ldk_bool, val_bool: val)
+converter toLogDetail*(val: int): LogDetail = LogDetail(kind: ldk_int, val_int: val)
+converter toLogDetail*(val: UUID): LogDetail = LogDetail(kind: ldk_uuid, val_uuid: val)
+
 genBinPak(LogData, LogDetail)
