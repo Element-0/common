@@ -26,8 +26,10 @@ type
       val_uuid*: UUID
 
   LogData* = object
-    level*: LogLevel
     area*: string
+    level*: LogLevel
+    source*: string
+    line*, column*: int
     content*: string
     details*: Table[string, LogDetail]
 
