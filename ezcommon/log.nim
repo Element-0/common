@@ -15,20 +15,20 @@ type
     ldk_uuid
 
   LogDetail* = object
-    case kind: LogDetailKind
+    case kind*: LogDetailKind
     of ldk_text:
-      val_text: string
+      val_text*: string
     of ldk_bool:
-      val_bool: bool
+      val_bool*: bool
     of ldk_int:
-      val_int: int
+      val_int*: int
     of ldk_uuid:
-      val_uuid: UUID
+      val_uuid*: UUID
 
   LogData* = object
-    level: LogLevel
-    area: string
-    content: string
-    details: Table[string, LogDetail]
+    level*: LogLevel
+    area*: string
+    content*: string
+    details*: Table[string, LogDetail]
 
 genBinPak(LogData, LogDetail)
