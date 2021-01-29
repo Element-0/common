@@ -5,6 +5,7 @@ type
     req_ping
     req_log
     req_load
+    req_bye
 
   RequestPacket* = object
     case kind*: RequestKind
@@ -14,6 +15,8 @@ type
       logData*: LogData
     of req_load:
       modName*: string
+    of req_bye:
+      discard
 
   ResponseKind* {.pure.} = enum
     res_pong
