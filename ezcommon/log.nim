@@ -33,6 +33,17 @@ type
     content*: string
     details*: Table[string, LogDetail]
 
+proc `$`*(detail: LogDetail): string =
+  case detail.kind:
+  of ldk_text:
+    detail.val_text
+  of ldk_bool:
+    $detail.val_bool
+  of ldk_int:
+    $detail.val_int
+  of ldk_uuid:
+    $detail.val_uuid
+
 converter toLogDetail*(str: string): LogDetail = LogDetail(kind: ldk_text, val_text: str)
 converter toLogDetail*(val: bool): LogDetail = LogDetail(kind: ldk_bool, val_bool: val)
 converter toLogDetail*(val: int): LogDetail = LogDetail(kind: ldk_int, val_int: val)
