@@ -26,6 +26,7 @@ type
       val_uuid*: UUID
 
   LogData* = object
+    area*: string
     tags*: seq[string]
     level*: LogLevel
     source*: string
