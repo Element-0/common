@@ -28,8 +28,8 @@ type
   LogData* = object
     area*: string
     level*: LogLevel
-    src_name*: string
-    src_line*, src_column*: int
+    source*: string
+    line*: int
     content*: string
     details*: Table[string, LogDetail]
 
