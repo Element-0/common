@@ -35,4 +35,6 @@ type
 converter toRequestPacket*(log: LogData): RequestPacket =
   RequestPacket(kind: req_log, logData: log)
 
+func noReply*(kind: RequestKind): bool {.inline.} = kind in {req_log, req_bye}
+
 genBinPak(RequestPacket, ResponsePacket)
