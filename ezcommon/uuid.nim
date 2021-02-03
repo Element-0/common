@@ -54,9 +54,9 @@ proc parseUUID*(str: string): UUID =
       even = true
   return UUID(ret)
 
-proc `~>`*(io: BinaryInput, x: var UUID) {.inline.} =
+func `~>`*(io: BinaryInput, x: var UUID) {.inline.} =
   for i in 0..<16:
     io ~> array[16, byte](x)[i]
-proc `<~`*(io: BinaryOutput, x: UUID) {.inline.} =
+func `<~`*(io: BinaryOutput, x: UUID) {.inline.} =
   for i in 0..<16:
     io <~ array[16, byte](x)[i]
