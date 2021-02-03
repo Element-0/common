@@ -1,4 +1,4 @@
-import hashes, strscans, strformat
+import std/[hashes, strscans, strformat], binpak
 
 type VersionCode* = distinct uint64
 
@@ -13,6 +13,7 @@ proc parseVersionCode*(str: string): VersionCode =
 proc `==`*(a, b: VersionCode): bool {.borrow.}
 
 proc `<`*(a, b: VersionCode): bool {.borrow.}
+proc `<=`*(a, b: VersionCode): bool {.borrow.}
 
 proc hash*(a: VersionCode): Hash {.borrow.}
 
@@ -23,3 +24,6 @@ proc `$`*(self: VersionCode): string =
   let c = uint16 raw shr 16
   let d = uint16 raw
   &"{a}.{b}.{c}.{d}"
+
+func `~>`*(io: BinaryInput, x: var VersionCode) {.inline, borrow.}
+func `<~`*(io: BinaryOutput, x: VersionCode) {.inline, borrow.}

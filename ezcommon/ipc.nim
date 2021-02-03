@@ -1,4 +1,4 @@
-import binpak, ./log
+import binpak, ./log, ./version_code
 
 type
   RequestKind* {.pure.} = enum
@@ -15,6 +15,7 @@ type
       logData*: LogData
     of req_load:
       modName*: string
+      minVersion*, maxVersion*: VersionCode
     of req_bye:
       discard
 
