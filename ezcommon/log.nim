@@ -34,7 +34,7 @@ type
     content*: string
     details*: Table[string, LogDetail]
 
-proc `$`*(detail: LogDetail): string =
+func `$`*(detail: LogDetail): string =
   case detail.kind:
   of ldk_text:
     detail.val_text
